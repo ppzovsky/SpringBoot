@@ -51,6 +51,10 @@ public class Perfil {
         this.descricao = descricao;
     }
 
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
     @Override
     public String toString() {
         return "Perfil{" +

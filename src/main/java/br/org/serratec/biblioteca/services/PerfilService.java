@@ -1,7 +1,9 @@
 package br.org.serratec.biblioteca.services;
 
 import br.org.serratec.biblioteca.entities.Perfil;
+import br.org.serratec.biblioteca.entities.Usuario;
 import br.org.serratec.biblioteca.repositories.PerfilRepository;
+import br.org.serratec.biblioteca.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -53,6 +55,11 @@ public class PerfilService {
             }
         }
         return null;
+    }
+
+    public List<Usuario> findByPerfil(Integer id){
+        Optional<Perfil> perfil = perfilRepository.findById(id);
+        return perfil.get().getUsuarios();
     }
 
     public long count (){

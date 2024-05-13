@@ -1,6 +1,7 @@
 package br.org.serratec.biblioteca.controller;
 
 import br.org.serratec.biblioteca.entities.Perfil;
+import br.org.serratec.biblioteca.entities.Usuario;
 import br.org.serratec.biblioteca.services.PerfilService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping ("/perfil")
@@ -55,5 +57,10 @@ public class PerfilController {
             perfilService.delete(id);
             return new ResponseEntity<>(perfil, HttpStatus.OK);
         }
+    }
+
+    @GetMapping("/{id}/{listusers}")
+    public ResponseEntity<List<Usuario>> findByPerfil(@PathVariable Integer id){
+        return new ResponseEntity<>(perfilService.findByPerfil(id), HttpStatus.OK);
     }
 }
