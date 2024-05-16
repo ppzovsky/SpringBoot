@@ -4,6 +4,7 @@ import br.org.serratec.biblioteca.dto.PerfilResumidoDTO;
 import br.org.serratec.biblioteca.entities.Perfil;
 import br.org.serratec.biblioteca.entities.Usuario;
 import br.org.serratec.biblioteca.services.PerfilService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
@@ -54,7 +55,7 @@ public class PerfilController {
         return new ResponseEntity<>(perfilDto, HttpStatus.OK);
     }
     @PostMapping
-    public ResponseEntity<Perfil> criaPerfil(@RequestBody Perfil perfil) {
+    public ResponseEntity<Perfil> criaPerfil(@Valid @RequestBody Perfil perfil) {
         return new ResponseEntity<>(perfilService.save(perfil), HttpStatus.CREATED);
     }
 

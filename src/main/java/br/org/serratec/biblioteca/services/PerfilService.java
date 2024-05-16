@@ -21,6 +21,9 @@ public class PerfilService {
     PerfilRepository perfilRepository;
     @Autowired
     private ModelMapper modelMapper;
+
+    @Autowired
+    EmailService emailService;
     public List<Perfil> findAll(){
         return perfilRepository.findAll();
     }
@@ -39,6 +42,7 @@ public class PerfilService {
     }
 
     public Perfil findById(Integer id){
+
         return perfilRepository.findById(id).orElseThrow(
                 () -> new EntidadeNotFoundException
                         ("Não foi encontrado um Perfil com o id " + id)
@@ -48,11 +52,11 @@ public class PerfilService {
         Perfil perfil = perfilRepository.findById(id).orElse(null);
         PerfilResumidoDTO perfilDto = null;
 
-//        try {
-            perfilDto = modelMapper.map(perfil, PerfilResumidoDTO.class);
-//        }catch (IllegalArgumentException e){
-//            throw new IllegalArgumentException("Erro ao buscar perfil", e);
-//        }
+        perfilDto = modelMapper.map(perfil, PerfilResumidoDTO.class);
+
+
+        emailService.enviarEmail("gugutrembala@gmail.com", "Cadastro", perfilDto.toString());
+
         return perfilDto;
     }
 

@@ -19,4 +19,12 @@ public class PerfilResumidoDTO {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    @Override
+    public String toString() {
+        return String.format("""
+                Nome: %s
+                Descricao: %s
+                """, nome, descricao);
+    }
 }

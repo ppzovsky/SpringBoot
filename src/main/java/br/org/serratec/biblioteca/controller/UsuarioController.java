@@ -2,6 +2,7 @@ package br.org.serratec.biblioteca.controller;
 
 import br.org.serratec.biblioteca.entities.Usuario;
 import br.org.serratec.biblioteca.services.UsuarioService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +32,7 @@ public class UsuarioController {
         }
     }
     @PostMapping
-    public ResponseEntity<Usuario> criaPerfil(@RequestBody Usuario usuario) {
+    public ResponseEntity<Usuario> criaPerfil(@Valid @RequestBody Usuario usuario) {
         return new ResponseEntity<>(usuarioService.save(usuario), HttpStatus.CREATED);
     }
 
