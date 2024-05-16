@@ -1,6 +1,10 @@
 package br.org.serratec.biblioteca.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "usuario")
@@ -10,8 +14,10 @@ public class Usuario {
     @Column(name = "user_id")
     private Integer userId;
     @Column(name = "user_nome")
+    @NotBlank (message = "Digite um nome valido")
     private String nome;
     @Column(name = "user_email")
+    @Pattern(regexp = "^[\\w!#$%&amp;'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&amp;'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$" , message = "Digite um email válido")
     private String email;
     @Column(name = "user_password")
     private String senha;
@@ -63,5 +69,9 @@ public class Usuario {
 
     public String getPerfil() {
         return perfil.getNome();
+    }
+
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
     }
 }

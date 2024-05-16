@@ -1,6 +1,8 @@
 package br.org.serratec.biblioteca.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.List;
 
@@ -12,10 +14,12 @@ public class Perfil {
     @Column(name = "perfil_id")
     private Integer perfilId;
     @Column(name = "nome")
+    @NotBlank (message = "Digite um nome valido")
     private String nome;
     @Column(name = "descricao")
     private String descricao;
     @OneToMany(mappedBy = "perfil")
+    @JsonIgnore
     private List<Usuario> usuarios;
 
     public Perfil(Integer perfilId, String nome, String descricao) {
@@ -25,6 +29,10 @@ public class Perfil {
     }
 
     public Perfil() {
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
 
     public Integer getPerfilId() {
