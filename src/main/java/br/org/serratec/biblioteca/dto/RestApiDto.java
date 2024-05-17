@@ -1,49 +1,40 @@
 package br.org.serratec.biblioteca.dto;
 
 public class RestApiDto {
-    private String title;
-    private Double price;
-    private String description;
-    private String image;
-    private String category;
+    private Integer id;
+    private String email;
+    private String username;
+    private String password;
 
-    public String getTitle() {
-        return title;
+    public Integer getId() {
+        return id;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Double getPrice() {
-        return price;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getDescription() {
-        return description;
+    public String getUsername() {
+        return username;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getImage() {
-        return image;
+    public String getPassword() {
+        return password;
     }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
