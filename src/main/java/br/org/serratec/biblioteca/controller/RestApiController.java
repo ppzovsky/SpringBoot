@@ -28,4 +28,8 @@ public class RestApiController {
 
     }
 
+    @GetMapping("/finduser")
+    public ResponseEntity<List<RestApiDto>> findAll(){
+        return new ResponseEntity<>(restApiService.findAll(), HttpStatus.OK);
+    }
 }
